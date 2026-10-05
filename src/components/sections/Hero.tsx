@@ -128,10 +128,11 @@ function PhotoFrame() {
 
       <div className="relative size-full overflow-hidden rounded-[1.75rem] border border-line-strong bg-surface">
         {/*
-          The source is a full-body portrait (≈9:16). object-cover keeps its
-          proportions; the scale + origin crop it to a chest-up framing with
-          the face centred in the upper third of the 4:5 frame. Because the
-          frame ratio is fixed, the crop is identical on every breakpoint.
+          The source is already a chest-up portrait (2:3). object-cover fills
+          the 4:5 frame without distortion, trimming only a little height;
+          object-position 50% 10% keeps headroom above the hair and the suit
+          down to the chest. Because the frame ratio is fixed, the crop is
+          identical on every breakpoint.
         */}
         <Image
           src={site.photo}
@@ -139,8 +140,8 @@ function PhotoFrame() {
           fill
           preload
           placeholder="blur"
-          sizes="(min-width: 1024px) 56rem, (min-width: 640px) 48rem, 36rem"
-          className="origin-[50%_8%] scale-[2] object-cover object-top brightness-[1.02]"
+          sizes="(min-width: 1024px) 28rem, (min-width: 640px) 24rem, 18rem"
+          className="object-cover object-[50%_10%] brightness-[1.02]"
         />
         {/* Cool tint so the white studio background blends with the dark palette */}
         <div className="pointer-events-none absolute inset-0 bg-linear-to-br from-primary/12 via-transparent to-secondary/15 mix-blend-multiply" />
